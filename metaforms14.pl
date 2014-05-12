@@ -1,4 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
 %       GRUPO NUM: 
@@ -6,7 +6,7 @@
 %
 %               ATENCAO: NAO USAR ACENTOS OU CEDILHAS
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 tab(Tabuleiro):- Tabuleiro=[(top,left),(top,middle),(top,right),(middle,left),(middle,middle),(middle,right),(bottom,left),(bottom,middle),(bottom,right)].
 
