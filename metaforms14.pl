@@ -8,7 +8,9 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+/*
 tab(Tabuleiro):- Tabuleiro=[(top,left),(top,middle),(top,right),(middle,left),(middle,middle),(middle,right),(bottom,left),(bottom,middle),(bottom,right)].
+*/
 
 peca(triangulo,azul).
 peca(triangulo,amarelo).
