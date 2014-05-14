@@ -1,16 +1,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
-%       GRUPO NUM: 
+%       GRUPO NUM:169
 %       ALUNOS: 
 %
 %               ATENCAO: NAO USAR ACENTOS OU CEDILHAS
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-/*
-tab(Tabuleiro):- Tabuleiro=[(top,left),(top,middle),(top,right),(middle,left),(middle,middle),(middle,right),(bottom,left),(bottom,middle),(bottom,right)].
-*/
 
 peca(triangulo,azul).
 peca(triangulo,amarelo).
@@ -31,5 +27,42 @@ coloca(A, center, right, [_,_,_,_,_,A,_,_,_]).
 coloca(A, bottom, left, [_,_,_,_,_,_,A,_,_]).
 coloca(A, bottom, middle, [_,_,_,_,_,_,_,A,_]).
 coloca(A, bottom, right, [_,_,_,_,_,_,_,_,A]).
+
+tSimples(A,Linha,Tabuleiro):-
+	linhaTriplaHorizontal(A, Linha, Tabuleiro);
+	 coloca(A,center,middle,Tabuleiro);
+	 coloca(A,bottom,middle,Tabuleiro).
+
+tInvertido(A,Linha,Tabuleiro):-
+	(linhaTriplaHorizontal(A, Linha, Tabuleiro);
+	 coloca(A,top,middle,Tabuleiro);
+	 coloca(A,center,middle,Tabuleiro)).
+
+/***************************************************
+ * Pistas axiliares
+ *
+ **************************************************/
+
+linhaTriplaHorizontal(A, Linha, Tabuleiro) :-
+     coloca(A, Linha,_, Tabuleiro).
+
+%linhaTriplaVertical(A, Coluna, Tabuleiro) :-
+%     coloca(A,_,Coluna, Tabuleiro).
+
+
+/***************************************************
+ *Testes pista simples
+ *
+ **************************************************/
+
+%tSimples
+desafio(tSimples, Tabuleiros) :- findall(Tabuleiro, 
+        tSimples(peca(quadrado, azul), center, Tabuleiro), Tabuleiros).
+
+%tInvertido
+desafio(tInvertido, Tabuleiros) :- findall(Tabuleiro, 
+        tSimples(peca(quadrado, azul), center , Tabuleiro), Tabuleiros).
+
+
 
 
