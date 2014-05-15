@@ -54,34 +54,44 @@ cobra(A,Linha,Coluna,Tabuleiro):-
 cantoTopRight(A,Linha,Coluna,Tabuleiro):-
 	     (coloca(A,Linha,Coluna,Tabuleiro);
 	      coloca(A,Linha,middle,Tabuleiro);
-	      coloca(A,center,Coluna,Tabuleiro)).
-
-%falta (center,middle)???
+	      coloca(A,center,Coluna,Tabuleiro);
+	      coloca(A,center,middle,Tabuleiro)).
 
 cantoTopLeft(A,Linha,Coluna,Tabuleiro):-
 	     (coloca(A,Linha,Coluna,Tabuleiro);
 	      coloca(A,Linha,middle,Tabuleiro);
-	      coloca(A,center,Coluna,Tabuleiro)).
+	      coloca(A,center,Coluna,Tabuleiro);
+	      coloca(A,center,middle,Tabuleiro)).
 
-%falta (center,middle)???
+cantoBottomLeft(A,Linha,Coluna,Tabuleiro):-
+	     (coloca(A,Linha,Coluna,Tabuleiro);
+	      coloca(A,Linha,middle,Tabuleiro);
+	      coloca(A,center,Coluna,Tabuleiro);
+	      coloca(A,center,middle,Tabuleiro)).
+
+cantoBottomRight(A,Linha,Coluna,Tabuleiro):-
+	     (coloca(A,Linha,Coluna,Tabuleiro);
+	      coloca(A,Linha,middle,Tabuleiro);
+	      coloca(A,center,Coluna,Tabuleiro);
+	      coloca(A,center,middle,Tabuleiro)).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+trioLeft(A,Linha,Coluna,Tabuleiro):-
+	 (coloca(A,Linha,Coluna,Tabuleiro);
+	  coloca(A,Linha,middle,Tabuleiro)).
+
+trioRight(A,Linha,Coluna,Tabuleiro):-
+	 (coloca(A,Linha,Coluna,Tabuleiro);
+	  coloca(A,Linha,middle,Tabuleiro)).
+
+diagonalGrave(A,Linha,Coluna,Tabuleiro):-
+	     (coloca(A,Linha,Coluna,Tabuleiro);
+	      coloca(A,Linha,middle,Tabuleiro)).
+	  
+diagonalAguda(A,Linha,Coluna,Tabuleiro):-
+	     (coloca(A,Linha,Coluna,Tabuleiro);
+	      coloca(A,Linha,middle,Tabuleiro)).
 				
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-/***************************************************
- * Pistas axiliares
- *
- **************************************************/
-
-linhaTriplaHorizontal(A, Linha, Tabuleiro) :-
-     coloca(A, Linha,_, Tabuleiro).
-
-linhaTriplaVertical(A, Coluna, Tabuleiro) :-
-     coloca(A,_,Coluna, Tabuleiro).
-
-
 /***************************************************
  *Testes pista simples
  *
