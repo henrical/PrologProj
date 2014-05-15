@@ -28,66 +28,44 @@ coloca(A, bottom, left, [_,_,_,_,_,_,A,_,_]).
 coloca(A, bottom, middle, [_,_,_,_,_,_,_,A,_]).
 coloca(A, bottom, right, [_,_,_,_,_,_,_,_,A]).
 
-/*
-tSimples(A,_,Coluna,Tabuleiro):-
-	(coloca(A,top,Coluna,Tabuleiro);
-	coloca(A,center,Coluna,Tabuleiro);
-	coloca(A,center,middle,Tabuleiro);
-	coloca(A,bottom,middle,Tabuleiro)).
-*/
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-tSimples(A,bottom,_,Tabuleiro):-
-	linhaTriplaHorizontal(A, center, Tabuleiro);
-	coloca(A,center,middle,Tabuleiro).
+tSimples(A,Linha,Coluna,Tabuleiro):-
+	(coloca(A,Linha,Coluna,Tabuleiro);
+	coloca(A,center,Coluna,Tabuleiro)).
 
-tSimples(A,top,_,Tabuleiro):-
-	linhaTriplaHorizontal(A, top, Tabuleiro);
-	coloca(A,center,middle,Tabuleiro).
 
-tSimples(A,center,_,Tabuleiro):-
-	linhaTriplaHorizontal(A, center, Tabuleiro);
-	coloca(A,bottom,middle,Tabuleiro).
+tInvertido(A,Linha,Coluna,Tabuleiro):-
+	(coloca(A,Linha,Coluna,Tabuleiro);
+	 coloca(A,center,Coluna,Tabuleiro)).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-tInvertido(A,top,_,Tabuleiro):-
-	linhaTriplaHorizontal(A, center, Tabuleiro);
-	coloca(A,top,middle,Tabuleiro).
+tLeft(A,Linha,Coluna,Tabuleiro):-
+	(coloca(A,Linha,Coluna,Tabuleiro);
+	 coloca(A,Linha,middle,Tabuleiro)).
 
-tInvertido(A,center,_,Tabuleiro):-
-	linhaTriplaHorizontal(A, center, Tabuleiro);
-	coloca(A,top,middle,Tabuleiro).
+tRight(A,Linha,Coluna,Tabuleiro):-
+	(coloca(A,Linha,Coluna,Tabuleiro);
+	 coloca(A,Linha,middle,Tabuleiro)).
 
-tInvertido(A,bottom,_,Tabuleiro):-
-	linhaTriplaHorizontal(A,bottom, Tabuleiro);
-	coloca(A,center,middle,Tabuleiro).
+cobra(A,Linha,Coluna,Tabuleiro):-
+	(coloca(A,Linha,Coluna,Tabuleiro);
+	 coloca(A,Linha,middle,Tabuleiro)).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-tLeft(A,_,right,Tabuleiro):-
-	linhaTriplaVertical(A, middle, Tabuleiro);
-	coloca(A,center,right,Tabuleiro).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+cantoTopRight(A,Linha,Coluna,Tabuleiro):-
+	     (coloca(A,Linha,Coluna,Tabuleiro);
+	      coloca(A,Linha,middle,Tabuleiro);
+	      coloca(A,center,Coluna,Tabuleiro)).
 
-tLeft(A,_,middle,Tabuleiro):-
-	linhaTriplaVertical(A, middle, Tabuleiro);
-	coloca(A,center,right,Tabuleiro).
+%falta (center,middle)???
 
-tLeft(A,_,left,Tabuleiro):-
-	linhaTriplaVertical(A, left, Tabuleiro);
-	coloca(A,center,middle,Tabuleiro).
+cantoTopLeft(A,Linha,Coluna,Tabuleiro):-
+	     (coloca(A,Linha,Coluna,Tabuleiro);
+	      coloca(A,Linha,middle,Tabuleiro);
+	      coloca(A,center,Coluna,Tabuleiro)).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%falta (center,middle)???
+				
 
-tRight(A,_,left,Tabuleiro):-
-	linhaTriplaVertical(A, middle, Tabuleiro);
-	coloca(A,center,left,Tabuleiro).
-
-tRight(A,_,middle,Tabuleiro):-
-	linhaTriplaVertical(A, middle, Tabuleiro);
-	coloca(A,center,left,Tabuleiro).
-
-tRight(A,_,right,Tabuleiro):-
-	linhaTriplaVertical(A, right, Tabuleiro);
-	coloca(A,center,middle,Tabuleiro).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -111,7 +89,7 @@ linhaTriplaVertical(A, Coluna, Tabuleiro) :-
 
 %tSimples
 desafio(tSimples, Tabuleiros) :- findall(Tabuleiro, 
-        tSimples(peca(quadrado, azul), center, _, Tabuleiro), Tabuleiros).
+        tSimples(peca(quadrado, azul), center, right, Tabuleiro), Tabuleiros).
 
 %tInvertido
 desafio(tInvertido, Tabuleiros) :- findall(Tabuleiro, 
