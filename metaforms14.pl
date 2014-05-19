@@ -119,7 +119,9 @@ permutar(L, [P | R]) :-
  *
  ****************************************************************/
 check(Tab1, Tab2) :- 
-	Pecas = [peca(triangulo, azul), peca(triangulo, amarelo), peca(triangulo, vermelho), peca(circulo, azul), peca(circulo, amarelo), peca(circulo, vermelho), peca(quadrado, azul), peca(quadrado, amarelo), peca(quadrado, vermelho)], permutar(Pecas, Tab1), Tab2 = Tab1.
+	Pecas = [peca(triangulo, azul), peca(triangulo, amarelo), peca(triangulo, vermelho), peca(circulo, azul), 
+	peca(circulo, amarelo), peca(circulo, vermelho), peca(quadrado, azul), peca(quadrado, amarelo), 
+	peca(quadrado, vermelho)], permutar(Pecas, Tab1), Tab2 = Tab1.
 
 /****************************************************************
  *4-testes
