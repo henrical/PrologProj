@@ -103,23 +103,42 @@ diagonalAguda(A,Linha,Coluna,Tabuleiro):-
 	      coloca(A,Linha,middle,Tabuleiro)).
 				
 /****************************************************************
- *2-Regras auxiliares
+ *2-Regras auxiliares usadas no check
  *
  ****************************************************************/
-escolher([P | R], P, R).
-escolher([P | R], E, [P | S]) :-
-	escolher(R, E, S). 
+
+/*********                                                *********
+ * Escolher                                                       *
+ * Utilizada para remover um dado membro "Element" da lista       *
+ *                                                                *
+ *********                                                *********/
+escolher([Head | Tail], Head, Tail).
+escolher([Head | Tail], Element, [Head | Tail2]) :-
+	escolher(Tail, Element, Tail2). 
+
+
+/*********                                                *********
+ * Permutar                                                       *
+ * Recebe duas listas, uma completa e outra imcompleta, e devolve *
+ * varias opcoes de preenchimento da lista incompleta de modo a   *
+ * que tenha os mesmos elementos que a primeira                   *
+ *********                                                *********/
 
 permutar([], []). 
-permutar(L, [P | R]) :- 
-	escolher(L, P, L1), permutar(L1, R). 
+permutar(List, [Head | R]) :-  
+	escolher(List, Head, L1), permutar(L1, R). 
 
 /****************************************************************
- *3-predicado check/2
+ *3-predicado check
  *
  ****************************************************************/
+
 check(Tab1, Tab2) :- 
-	Pecas = [peca(triangulo, azul), peca(triangulo, amarelo), peca(triangulo, vermelho), peca(circulo, azul), peca(circulo, amarelo), peca(circulo, vermelho), peca(quadrado, azul), peca(quadrado, amarelo), peca(quadrado, vermelho)], permutar(Pecas, Tab1), Tab2 = Tab1.
+	Pecas = [peca(triangulo, azul), peca(triangulo, amarelo), 
+	peca(triangulo, vermelho), peca(circulo, azul), peca(circulo, amarelo), 	peca(circulo, vermelho), peca(quadrado, azul), peca(quadrado, amarelo), 	peca(quadrado, vermelho)], 
+	permutar(Pecas, Tab1), 
+	Tab2 = Tab1.
+
 
 /****************************************************************
  *4-testes
