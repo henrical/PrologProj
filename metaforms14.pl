@@ -2,7 +2,7 @@
 %
 %
 %       GRUPO NUM: 169
-%       ALUNOS: 
+%       ALUNOS: 75838 e 76062
 %
 %               ATENCAO: NAO USAR ACENTOS OU CEDILHAS
 %
@@ -109,7 +109,7 @@ diagonalAguda(A,Linha,Coluna,Tabuleiro):-
 
 /*********                                                *********
  * Escolher                                                       *
- * Utilizada para remover um dado membro "Element" da lista       *
+ * Utilizada para remover um dado membro "Element" da lista.      *
  *                                                                *
  *********                                                *********/
 escolher([Head | Tail], Head, Tail).
