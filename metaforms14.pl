@@ -33,12 +33,6 @@ coloca(A, bottom, right, [_,_,_,_,_,_,_,_,A]).
  *
  *****************************************************************/
 
-rectanguloHorizontal(A, Linha, Coluna, Tabuleiro) :- 
-     (coloca(A, Linha, Coluna, Tabuleiro); 
-      coloca(A, center, Coluna, Tabuleiro)).
-
-/*****************************************************************/
-
 tSimples(A,Linha,Coluna,Tabuleiro):-
 	(coloca(A,Linha,Coluna,Tabuleiro);
 	coloca(A,center,Coluna,Tabuleiro)).
@@ -138,46 +132,6 @@ check(Tab1, Tab2) :-
 	peca(triangulo, vermelho), peca(circulo, azul), peca(circulo, amarelo), 	peca(circulo, vermelho), peca(quadrado, azul), peca(quadrado, amarelo), 	peca(quadrado, vermelho)], 
 	permutar(Pecas, Tab1), 
 	Tab2 = Tab1.
-
-/****************************************************************
- *4-testes
- *
- ****************************************************************/
-
-desafio(1, TabuleiroFinal) :- 
-	coloca(peca(triangulo, vermelho), top, right, Tabuleiro),
-    	tSimples(peca(circulo, azul), top, right, Tabuleiro),
-	tLeft(peca(circulo, vermelho), center, right, Tabuleiro),
-	trioRight(peca(triangulo, amarelo), center, left, Tabuleiro),
-	cantoTopLeft(peca(quadrado, vermelho), top, right, Tabuleiro),
-	cantoTopLeft(peca(circulo, amarelo), top, left, Tabuleiro),
-	rectanguloHorizontal(peca(triangulo, azul), bottom, right, Tabuleiro),
-	diagonalGrave(peca(quadrado, azul), bottom, right, Tabuleiro),
-	diagonalAguda(peca(quadrado, amarelo), bottom, left, Tabuleiro),
-	check(Tabuleiro, TabuleiroFinal).
-
-desafio(2, TabuleiroFinal) :- 
-	coloca(peca(triangulo, vermelho), top, right, Tabuleiro),
-    	tSimples(peca(circulo, azul), top, right, Tabuleiro),
-	tLeft(peca(circulo, vermelho), center, right, Tabuleiro),
-	trioRight(peca(triangulo, amarelo), center, left, Tabuleiro),
-	cantoTopLeft(peca(quadrado, vermelho), top, right, Tabuleiro),
-	cantoTopLeft(peca(circulo, amarelo), top, left, Tabuleiro),
-	rectanguloHorizontal(peca(triangulo, azul), bottom, right, Tabuleiro),
-	diagonalAguda(peca(quadrado, amarelo), bottom, left, Tabuleiro),
-	check(Tabuleiro, TabuleiroFinal).
-
-desafio(3, TabuleiroFinal) :- 
-	coloca(peca(triangulo, vermelho), top, right, Tabuleiro),
-    	tSimples(peca(circulo, azul), top, right, Tabuleiro),
-	tLeft(peca(circulo, vermelho), center, right, Tabuleiro),
-	trioRight(peca(triangulo, _), center, left, Tabuleiro),
-	cantoTopLeft(peca(_, vermelho), top, right, Tabuleiro),
-	cantoTopLeft(peca(circulo, amarelo), top, left, Tabuleiro),
-	rectanguloHorizontal(peca(triangulo, azul), bottom, right, Tabuleiro),
-	diagonalGrave(peca(quadrado, azul), bottom, right, Tabuleiro),
-	diagonalAguda(peca(quadrado, amarelo), bottom, left, Tabuleiro),
-	check(Tabuleiro, TabuleiroFinal).
 
 /******************************************************************************/
 
